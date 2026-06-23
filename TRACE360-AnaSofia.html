@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRACE 360° · Ana Sofía Prieto</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream:   #F7F3EE;
+    --sand:    #EDE6DA;
+    --gold:    #C8A96E;
+    --dark:    #1E1B17;
+    --mid:     #5A5248;
+    --light:   #9C9189;
+    --white:   #FFFFFF;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--dark);
+    padding: 48px 48px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .header-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .header-system {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-top: 6px;
+  }
+  .header-date {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--light);
+    text-align: right;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--dark);
+    padding: 0 48px 64px;
+    border-bottom: 1px solid #2E2A25;
+  }
+  .hero-divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 32px;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .hero-perfil {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 6px 16px;
+  }
+  .hero-tag {
+    display: inline-block;
+    margin-top: 8px;
+    margin-left: 12px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--light);
+  }
+  .hero-quote {
+    margin-top: 40px;
+    max-width: 600px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-style: italic;
+    font-weight: 300;
+    color: #B0A898;
+    line-height: 1.6;
+    padding-left: 20px;
+    border-left: 2px solid var(--gold);
+  }
+
+  /* ── METRICS ── */
+  .metrics {
+    background: var(--sand);
+    padding: 48px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background-color: #D5CBBC;
+  }
+  .metric {
+    background: var(--sand);
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .metric-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 16px;
+  }
+  .metric-bar-wrap {
+    width: 100%;
+    height: 4px;
+    background: #D5CBBC;
+    border-radius: 2px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .metric-bar {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--gold);
+    transition: width 1.2s cubic-bezier(.4,0,.2,1);
+  }
+  .metric-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--dark);
+  }
+
+  /* ── MAIN GRID ── */
+  .main {
+    padding: 64px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: #D5CBBC;
+  }
+  .card {
+    background: var(--white);
+    padding: 40px;
+  }
+  .card-full {
+    grid-column: 1 / -1;
+    background: var(--cream);
+    padding: 48px;
+  }
+  .card-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+  .card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .card ul li {
+    font-size: 14px;
+    color: var(--mid);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .card ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 12px;
+  }
+
+  /* ── PLAN 21 DÍAS ── */
+  .plan-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .semana {
+    border-top: 2px solid var(--gold);
+    padding-top: 20px;
+  }
+  .semana-num {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 4px;
+  }
+  .semana-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 16px;
+  }
+  .semana ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .semana ul li {
+    font-size: 13px;
+    color: var(--mid);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .semana ul li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* ── CLOSING QUOTE ── */
+  .closing {
+    background: var(--dark);
+    padding: 64px 48px;
+    text-align: center;
+  }
+  .closing-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 3vw, 26px);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--white);
+    max-width: 580px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+  }
+  .closing-cta {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    text-decoration: none;
+    margin-bottom: 32px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .closing-cta:hover {
+    background: var(--gold);
+    color: var(--dark);
+  }
+  .closing-footer {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--light);
+    margin-top: 16px;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; }
+    .header, .hero, .closing { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .metrics, .main { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    .header, .hero, .metrics, .main, .closing { padding: 32px 24px; }
+    .metrics { grid-template-columns: 1fr; }
+    .main { grid-template-columns: 1fr; }
+    .card-full { grid-column: 1; }
+    .plan-grid { grid-template-columns: 1fr; }
+    .hero-tag { display: block; margin-left: 0; margin-top: 8px; }
+  }
+
+  /* ── ANIMATION ── */
+  @media (prefers-reduced-motion: no-preference) {
+    .metric-bar { width: 0 !important; }
+    .metric-bar.animate { width: var(--w) !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div>
+    <div class="header-brand">Antshopper®</div>
+    <div class="header-system">Sistema Trace 360°</div>
+  </div>
+  <div class="header-date">21 de mayo de 2026<br>Cartilla Personalizada</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-divider"></div>
+  <div class="hero-name">Ana Sofía<br>Prieto</div>
+  <div>
+    <span class="hero-perfil">Perfil · Resiliencia &amp; Renacimiento</span>
+    <span class="hero-tag">En Reconstrucción</span>
+  </div>
+  <blockquote class="hero-quote">
+    "Estás saliendo de algo que costó. Y todavía estás saliendo. Lo que necesitas ahora no es fuerza adicional — ya tienes demasiada. Necesitas gentileza contigo misma."
+  </blockquote>
+</section>
+
+<!-- MÉTRICAS -->
+<section class="metrics">
+  <div class="metric">
+    <div class="metric-label">Agotamiento</div>
+    <div class="metric-bar-wrap">
+      <div class="metric-bar" style="--w: 68%" data-w="68%"></div>
+    </div>
+    <div class="metric-value">68%</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Claridad</div>
+    <div class="metric-bar-wrap">
+      <div class="metric-bar" style="--w: 18%" data-w="18%"></div>
+    </div>
+    <div class="metric-value">18%</div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">Conexión</div>
+    <div class="metric-bar-wrap">
+      <div class="metric-bar" style="--w: 14%" data-w="14%"></div>
+    </div>
+    <div class="metric-value">14%</div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<main class="main">
+
+  <!-- Mente -->
+  <div class="card">
+    <div class="card-eyebrow">Mente &amp; Emociones</div>
+    <div class="card-title">Lo que tu mente<br>necesita ahora</div>
+    <ul>
+      <li>No te exijas "volver a ser la misma" — esa persona ya evolucionó.</li>
+      <li>Permítete un duelo explícito, con tiempo y sin fechas de vencimiento.</li>
+      <li>Si el peso es muy pesado: el acompañamiento profesional no es debilidad — es inteligencia emocional.</li>
+      <li>Rodéate de personas que no te pidan que estés bien antes de estarlo.</li>
+    </ul>
+  </div>
+
+  <!-- Cuerpo -->
+  <div class="card">
+    <div class="card-eyebrow">Cuerpo &amp; Hábitos</div>
+    <div class="card-title">Lo que tu cuerpo<br>necesita ahora</div>
+    <ul>
+      <li>Prioriza el sueño sobre cualquier otra mejora. El cuerpo se reconstruye mientras duermes.</li>
+      <li>Movimiento suave: yoga, caminatas, natación. Nada que demande adrenalina ahora.</li>
+      <li>Vuelve a lo básico: comidas simples, reales, con personas que te hagan bien.</li>
+      <li>Un día a la vez. No hay línea de llegada — solo el siguiente paso.</li>
+    </ul>
+  </div>
+
+  <!-- Imagen -->
+  <div class="card" style="grid-column: 1 / -1;">
+    <div class="card-eyebrow">Imagen &amp; Estilo</div>
+    <div class="card-title">Lo que tu imagen refleja hoy</div>
+    <ul>
+      <li>En reconstrucción la ropa puede ser un disfraz — o una declaración de que estás volviendo.</li>
+      <li>Elige la segunda opción. Una prenda nueva con intención puede funcionar como ritual de cierre.</li>
+      <li>No hagas cambios masivos en tu imagen ahora — un cambio pequeño y poderoso es suficiente.</li>
+      <li>Antshopper puede acompañarte a encontrar la prenda que diga "estoy de vuelta" — cuando estés lista.</li>
+    </ul>
+  </div>
+
+  <!-- Plan 21 días -->
+  <div class="card-full">
+    <div class="card-eyebrow">Plan de Transformación</div>
+    <div class="card-title">Tu plan de 21 días</div>
+    <div class="plan-grid">
+      <div class="semana">
+        <div class="semana-num">Semana 1</div>
+        <div class="semana-title">Gentileza primero</div>
+        <ul>
+          <li>Dormir sin alarma al menos 2 días</li>
+          <li>Una persona que me escuche sin juzgar</li>
+          <li>Eliminar una fuente de estrés esta semana</li>
+          <li>Una cosa bonita solo para mí</li>
+        </ul>
+      </div>
+      <div class="semana">
+        <div class="semana-num">Semana 2</div>
+        <div class="semana-title">Movimiento suave</div>
+        <ul>
+          <li>Caminata diaria de 20 min</li>
+          <li>Comidas simples y reales</li>
+          <li>Ritual de mañana de 10 min</li>
+          <li>Escribir: ¿qué aprendí de esto?</li>
+        </ul>
+      </div>
+      <div class="semana">
+        <div class="semana-num">Semana 3</div>
+        <div class="semana-title">Señales de regreso</div>
+        <ul>
+          <li>Una prenda que diga "estoy de vuelta"</li>
+          <li>Activa tu Sesión de Identidad</li>
+          <li>Define quién quieres ser en el siguiente capítulo</li>
+          <li>Celebra haber llegado hasta aquí</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- CLOSING -->
+<footer class="closing">
+  <p class="closing-quote">
+    "Reconstruirse no es volver a ser quien eras.<br>Es conocer a quien te estás convirtiendo."
+  </p>
+  <a href="https://wa.me/573001234567" class="closing-cta">Activa tu Sesión de Identidad</a>
+  <div class="closing-footer">
+    wa.me/573001234567 &nbsp;·&nbsp; Tu identidad, primero. Tu producto, después.<br>
+    ANTSHOPPER® · TRACE 360° · Generado para Ana Sofía Prieto · Confidencial
+  </div>
+</footer>
+
+<script>
+  // Animate metric bars on load
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.metric-bar').forEach(bar => {
+      bar.style.width = '0%';
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          bar.style.width = bar.dataset.w;
+          bar.classList.add('animate');
+        }, 300);
+      });
+    });
+  });
+</script>
+</body>
+</html>
